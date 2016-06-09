@@ -64,7 +64,7 @@ module KnifeSupport
         instance = subcommand_class.new(args)
 
         # Capture stdout/stderr
-        instance.ui = Chef::Knife::UI.new(stdout, stderr, stdin, {})
+        instance.ui = Chef::Knife::UI.new(stdout, stderr, stdin, disable_editing: true)
 
         # Don't print stuff
         Chef::Config[:verbosity] = ( DEBUG ? 2 : 0 )
