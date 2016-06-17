@@ -100,12 +100,13 @@ EOM
       end
 
       it "uploads a whole directory" do
-        knife("data bag from file foo #{db_dir}/foo").should_succeed stderr: <<EOM
-Updated data_bag_item[foo::bar]
-Updated data_bag_item[foo::bzr]
-Updated data_bag_item[foo::cat]
-Updated data_bag_item[foo::dog]
-Updated data_bag_item[foo::encrypted]
+        knife("data bag from file foo #{db_dir}/foo")
+        knife("data bag show foo").should_succeed <<EOM
+bar
+bzr
+cat
+dog
+encrypted
 EOM
       end
 

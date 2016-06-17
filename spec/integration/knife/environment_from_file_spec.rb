@@ -101,10 +101,12 @@ EOM
 
       it "uploads all environments in the repository" do
         cwd(".")
-        knife("environment from file --all").should_succeed stderr: <<EOM
-Updated Environment car
-Updated Environment cdr
-Updated Environment cons
+        knife("environment from file --all")
+        knife("environment list").should_succeed <<EOM
+_default
+car
+cdr
+cons
 EOM
       end
 
